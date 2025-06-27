@@ -2,7 +2,6 @@
 
 import React from 'react'
 import styles from './PredictionsBlock.module.css'
-import { ModelData } from '../MnistPage'
 import ModelBlock from './ModelBlock'
 import EmptyBlock from './EmptyBlock'
 import { usePrediction } from '../helpers/PredictionContext'

@@ -6,7 +6,7 @@ import { getLayerStyle } from '../helpers/helpers'
 
 const SummaryBlock = () => {
 
-    const { selectedModel, setSelectedModel } = useSelectedModel();
+    const { selectedModel } = useSelectedModel();
 
     const modelStats = getSummary(selectedModel)
     return (

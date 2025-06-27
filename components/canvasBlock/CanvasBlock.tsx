@@ -1,19 +1,18 @@
 'use client';
+
 import React, { useState } from 'react'
 import { useCanvasDrawing, Prediction } from '../helpers/useCanvasDrawing'
-import { ModelData } from '../MnistPage';
 import styles from './CanvasBlock.module.css'
 import { usePrediction } from '../helpers/PredictionContext';
 
-// interface CanvasBlockProps {
-//     setData: React.Dispatch<React.SetStateAction<ModelData[]>>;
-// }
 const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
 const CanvasBlock = () => {
     const [showOverlay, setShowOverlay] = useState(true);
     const [predictions, setPredictions] = useState<Prediction[]>([]);
     const { setData, setIsLoading, isLoading } = usePrediction();
+
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
     const {
         canvasRef,
@@ -47,7 +46,7 @@ const CanvasBlock = () => {
 
             await sleep(10000);
 
-            const res = await fetch("http://3.143.204.131:8000/mnist/predict/", {
+            const res = await fetch(`${apiUrl}/mnist/predict/`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -62,20 +61,6 @@ const CanvasBlock = () => {
         } finally {
             setIsLoading(false)
         }
-
-        // const base64Image = getCanvasImageData()
-
-        // const res = await fetch("http://3.143.204.131:8000/mnist/predict/", {
-        //     method: "POST",
-        //     headers: {
-        //         "Content-Type": "application/json",
-        //     },
-        //     body: JSON.stringify({ image: base64Image })
-        // });
-
-        // const data = await res.json();
-        // setData(data)
-        // console.log(data);
     }
 
     return (
