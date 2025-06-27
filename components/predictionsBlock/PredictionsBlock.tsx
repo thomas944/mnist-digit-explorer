@@ -8,22 +8,28 @@ import EmptyBlock from './EmptyBlock'
 import { usePrediction } from '../helpers/PredictionContext'
 
 const PredictionsBlock = () => {
-    const { data } = usePrediction();
+    const { data, isLoading } = usePrediction();
 
     return (
         <div className={styles.container}>
             <span className={styles.titleText}>Model Predictions</span>
-             {data && data.length > 0 ? (
+            {isLoading && (
+                <div className={styles.loadingContainer}>
+                    <span className={styles.loadingText}>Loading...</span>
+                </div>
+            )}
+
+            {!isLoading && data && data.length > 0 ? (
                 data.map((entry, index) => (
-                    <ModelBlock 
-                        key={index} 
-                        name={entry.name} 
-                        output={entry.output} 
+                    <ModelBlock
+                        key={index}
+                        name={entry.name}
+                        output={entry.output}
                         guess={entry.guess}
                     />
                 ))
             ) : (
-                <EmptyBlock />
+                !isLoading && <EmptyBlock />
             )}
         </div>
     )

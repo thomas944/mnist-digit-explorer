@@ -8,11 +8,12 @@ import { usePrediction } from '../helpers/PredictionContext';
 // interface CanvasBlockProps {
 //     setData: React.Dispatch<React.SetStateAction<ModelData[]>>;
 // }
+const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
 const CanvasBlock = () => {
     const [showOverlay, setShowOverlay] = useState(true);
     const [predictions, setPredictions] = useState<Prediction[]>([]);
-    const { setData, setIsLoading } = usePrediction();
+    const { setData, setIsLoading, isLoading } = usePrediction();
 
     const {
         canvasRef,
@@ -36,19 +37,45 @@ const CanvasBlock = () => {
             return
         }
 
-        const base64Image = getCanvasImageData()
+        if (isLoading) {
+            return
+        }
 
-        const res = await fetch("http://3.143.204.131:8000/mnist/predict/", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ image: base64Image })
-        });
+        try {
+            setIsLoading(true)
+            const base64Image = getCanvasImageData()
 
-        const data = await res.json();
-        setData(data)
-        console.log(data);
+            await sleep(10000);
+
+            const res = await fetch("http://3.143.204.131:8000/mnist/predict/", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ image: base64Image })
+                
+            });
+            const data = await res.json();
+            setData(data)
+        } catch (error) {
+            console.error('Prediction Failed!: ', error)
+        } finally {
+            setIsLoading(false)
+        }
+
+        // const base64Image = getCanvasImageData()
+
+        // const res = await fetch("http://3.143.204.131:8000/mnist/predict/", {
+        //     method: "POST",
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //     },
+        //     body: JSON.stringify({ image: base64Image })
+        // });
+
+        // const data = await res.json();
+        // setData(data)
+        // console.log(data);
     }
 
     return (
@@ -74,9 +101,12 @@ const CanvasBlock = () => {
                         className={styles.clearButton}>
                         Clear
                     </button>
-                    <button onClick={handlePredict}
-                        className={styles.predictButton}>
-                        Predict
+                    <button 
+                        onClick={handlePredict}
+                        className={`${styles.predictButton} ${isLoading ? styles.loadPredict : ''}`}
+                        disabled={isLoading}
+                    >
+                        {isLoading ? 'Wait!' : 'Predict'}
                     </button>
                 </div>
             </div>

@@ -13,7 +13,7 @@ const EmptyBlock = () => {
             </div>
             <div className={styles.sm}>
                 <div className={styles.textContainer}>
-                    <MdOutlineArrowUpward size={30}/>
+                    <MdOutlineArrowUpward className={styles.smArrow}/>
                     <span className={styles.textSmallView}> Draw a digit to begin!</span>
                 </div>
             </div>
