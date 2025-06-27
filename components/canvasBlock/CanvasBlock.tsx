@@ -5,11 +5,7 @@ import { useCanvasDrawing, Prediction } from '../helpers/useCanvasDrawing'
 import styles from './CanvasBlock.module.css'
 import { usePrediction } from '../helpers/PredictionContext';
 
-const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
-
 const CanvasBlock = () => {
-    const [_showOverlay, setShowOverlay] = useState(true);
-    const [_predictions, setPredictions] = useState<Prediction[]>([]);
     const { setData, setIsLoading, isLoading } = usePrediction();
 
     const apiUrl = process.env.NEXT_PUBLIC_API_URL;
@@ -20,14 +16,7 @@ const CanvasBlock = () => {
         clearCanvas,
         undoLastStroke,
         getCanvasImageData,
-    } = useCanvasDrawing({
-        onCanvasChange: (hasContent) => {
-            setShowOverlay(!hasContent);
-        },
-        onPredictionsReset: () => {
-            setPredictions([]);
-        }
-    });
+    } = useCanvasDrawing();
 
     const handlePredict = async () => {
         if (!hasDrawn) {
@@ -42,8 +31,6 @@ const CanvasBlock = () => {
         try {
             setIsLoading(true)
             const base64Image = getCanvasImageData()
-
-            await sleep(10000);
 
             const res = await fetch(`${apiUrl}/mnist/predict/`, {
                 method: "POST",

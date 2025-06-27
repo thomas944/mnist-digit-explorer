@@ -5,18 +5,12 @@ interface Point {
     y: number;
 }
 
-interface UseCanvasDrawingProps {
-    onCanvasChange?: (hasContent: boolean) => void;
-    onPredictionsReset?: () => void;
-}
-
-
 export interface Prediction {
     digit: number;
     confidence: number;
 }
 
-export const useCanvasDrawing = ({ onCanvasChange, onPredictionsReset }: UseCanvasDrawingProps) => {
+export const useCanvasDrawing = () => {
     const [isDrawing, setIsDrawing] = useState(false)
     const [hasDrawn, setHasDrawn] = useState(false)
 
@@ -71,10 +65,7 @@ export const useCanvasDrawing = ({ onCanvasChange, onPredictionsReset }: UseCanv
 
         ctx.beginPath();
         ctx.moveTo(x, y);
-        if (onCanvasChange) {
-            onCanvasChange(true);
-        }
-    }, [initializeCanvas, getMousePos, onCanvasChange]);
+    }, [initializeCanvas, getMousePos]);
 
     const draw = useCallback((e: MouseEvent | TouchEvent) => {
         if (!isDrawing) return
@@ -111,13 +102,8 @@ export const useCanvasDrawing = ({ onCanvasChange, onPredictionsReset }: UseCanv
         setHasDrawn(false);
         setIsDrawing(false);
 
-        if (onCanvasChange) {
-            onCanvasChange(false);
-        }
-        if (onPredictionsReset) {
-            onPredictionsReset();
-        }
-    }, [onCanvasChange, onPredictionsReset]);
+       
+    }, []);
 
     const undoLastStroke = useCallback(() => {
         if (strokeHistory.length === 0) return
@@ -134,12 +120,6 @@ export const useCanvasDrawing = ({ onCanvasChange, onPredictionsReset }: UseCanv
 
         if (newHistory.length === 0) {
             setHasDrawn(false)
-            if (onCanvasChange) {
-                onCanvasChange(false)
-            }
-            if (onPredictionsReset) {
-                onPredictionsReset()
-            }
         } else {
             const newCtx = initializeCanvas()
             if (newCtx) {
@@ -157,7 +137,7 @@ export const useCanvasDrawing = ({ onCanvasChange, onPredictionsReset }: UseCanv
         }
 
         setStrokeHistory(newHistory)
-    }, [strokeHistory, initializeCanvas, onCanvasChange, onPredictionsReset]);
+    }, [strokeHistory, initializeCanvas]);
 
     const getCanvasImageData = useCallback(() => {
         const canvas = canvasRef.current

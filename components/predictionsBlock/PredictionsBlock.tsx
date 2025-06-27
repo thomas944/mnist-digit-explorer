@@ -8,18 +8,13 @@ import EmptyBlock from './EmptyBlock'
 import { usePrediction } from '../helpers/PredictionContext'
 
 const PredictionsBlock = () => {
-    const { data, isLoading } = usePrediction();
+    const { data } = usePrediction();
 
     return (
         <div className={styles.container}>
             <span className={styles.titleText}>Model Predictions</span>
-            {isLoading && (
-                <div className={styles.loadingContainer}>
-                    <span className={styles.loadingText}>Loading...</span>
-                </div>
-            )}
-
-            {!isLoading && data && data.length > 0 ? (
+            
+            {data && data.length > 0 ? (
                 data.map((entry, index) => (
                     <div key={index}>
                         <div className={styles.modelBlockLgView}>
@@ -40,7 +35,7 @@ const PredictionsBlock = () => {
 
                 ))
             ) : (
-                !isLoading && <EmptyBlock />
+                <EmptyBlock />
             )}
         </div>
     )
