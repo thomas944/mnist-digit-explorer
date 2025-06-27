@@ -27,5 +27,18 @@
 }
 
 .loadingText {
-    font-size: 1.5rem
+    font-size: 1.5rem;
+}
+
+.modelBlockSmView {
+    display: none;
+}
+
+@media screen and (max-width: 535px) {
+    .modelBlockLgView {
+        display: none;
+    }
+    .modelBlockSmView {
+        display: block;
+    }
 }

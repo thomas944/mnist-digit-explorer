@@ -1,0 +1,80 @@
+.container {
+    width: 100%;
+    height: 200px;
+    background-color: #E2E3F8;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: row;
+    padding: 1rem
+}
+
+.centerX {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.leftContainer {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem
+}
+
+.nameContainer {
+    display: flex;
+    flex-direction: column;
+    height: 40%;
+}
+
+.nameText {
+    color: #6974DC;
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+.guessText {
+    color: #6974DC;
+    font-size: 1.75rem;
+    font-weight: 500;
+    padding-right: 1rem;
+    
+}
+
+.guessConfText {
+    color: #006802;
+    background-color: #c4dc69;
+    padding: 5px 16px;
+    border-radius: 1rem;
+    font-size: .75rem
+}
+
+.topMargin {
+    margin-top: 10px
+}
+
+.rightContainer {
+    width: 70%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: .75rem 1.5rem;
+}
+
+.rightHeader {
+    font-size: 1.25rem;
+    font-weight: 500;
+    padding-bottom: 1rem;
+}
+
+.listItem {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.confText {
+    color: #868484;
+}

@@ -1,6 +1,16 @@
 import React from 'react'
 import styles from './ModelBlock.module.css'
-import { ModelData } from '../MnistPage';
+
+interface Prediction {
+    digit: number;
+    confidence: number;
+}
+
+interface ModelData {
+    name: string;
+    output: Prediction[];
+    guess: Prediction;
+}
 
 const ModelBlock = ({ name, output, guess }: ModelData) => {
     const maxConfidence = Math.max(...output.map(pred => pred.confidence));
@@ -26,7 +36,7 @@ const ModelBlock = ({ name, output, guess }: ModelData) => {
                 <div className={styles.chartContainer}>
                     <div className={styles.barsContainer}>
                         {output.map((item, index) => (
-                            <div key={item.digit} className={styles.barColumn}>
+                            <div key={index} className={styles.barColumn}>
                                 <div className={styles.barWrapper}>
                                     <div
                                         style={{
