@@ -1,14 +1,15 @@
+'use client';
+
 import React from 'react'
 import styles from './PredictionsBlock.module.css'
 import { ModelData } from '../MnistPage'
 import ModelBlock from './ModelBlock'
 import EmptyBlock from './EmptyBlock'
+import { usePrediction } from '../helpers/PredictionContext'
 
-interface PredictionBlockProps {
-    data?: ModelData[]
-}
+const PredictionsBlock = () => {
+    const { data } = usePrediction();
 
-const PredictionsBlock = ({ data }: PredictionBlockProps) => {
     return (
         <div className={styles.container}>
             <span className={styles.titleText}>Model Predictions</span>

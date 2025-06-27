@@ -10,7 +10,7 @@ import TipsBlock from './tipsBlock/TipsBlock';
 import SummaryBlock from './summaryBlock/SummaryBlock';
 import styles from './MnistPage.module.css';
 import { SelectedModelProvider } from './helpers/useSelectModel';
-import { lg, md } from './layouts'
+import { lg, md } from '../app/layouts'
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
@@ -32,7 +32,7 @@ const MnistPage = () => {
     return (
 
         <div className={styles.container}>
-            <div className={styles.titleContainer}>
+            {/* <div className={styles.titleContainer}>
                 <div className={styles.headerContainer}>
                     <span className={styles.topHeader}>MNIST Model Explorer</span>
                     <span className={styles.subHeader}>Draw digits on the canvas and compare predictions across three different AI models!</span>
@@ -69,7 +69,7 @@ const MnistPage = () => {
                         </SelectedModelProvider>
                     </div>
                 </div>
-            </div>
+            </div> */}
         </div>
     )
 }

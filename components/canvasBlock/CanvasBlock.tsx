@@ -1,15 +1,18 @@
+'use client';
 import React, { useState } from 'react'
 import { useCanvasDrawing, Prediction } from '../helpers/useCanvasDrawing'
 import { ModelData } from '../MnistPage';
 import styles from './CanvasBlock.module.css'
+import { usePrediction } from '../helpers/PredictionContext';
 
-interface CanvasBlockProps {
-    setData: React.Dispatch<React.SetStateAction<ModelData[]>>;
-}
+// interface CanvasBlockProps {
+//     setData: React.Dispatch<React.SetStateAction<ModelData[]>>;
+// }
 
-const CanvasBlock = ({ setData }: CanvasBlockProps) => {
+const CanvasBlock = () => {
     const [showOverlay, setShowOverlay] = useState(true);
     const [predictions, setPredictions] = useState<Prediction[]>([]);
+    const { setData, setIsLoading } = usePrediction();
 
     const {
         canvasRef,

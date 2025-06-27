@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styles from './ConfusionMatrixBlock.module.css'
 import { createGrid, getCellContent, getCellStyle, getModelData } from '../helpers/helpers'
 import { useSelectedModel } from '../helpers/useSelectModel'
