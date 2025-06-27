@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useState } from 'react'
-import { useCanvasDrawing, Prediction } from '../helpers/useCanvasDrawing'
+import React from 'react'
+import { useCanvasDrawing } from '../helpers/useCanvasDrawing'
 import styles from './CanvasBlock.module.css'
 import { usePrediction } from '../helpers/PredictionContext';
 
