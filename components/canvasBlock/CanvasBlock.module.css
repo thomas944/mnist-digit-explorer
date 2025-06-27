@@ -1,0 +1,80 @@
+.container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 1rem;
+    border: 1px solid #eaeaea;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.titleText {
+    font-family: 'Geist', sans-serif;
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.canvasContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.canvas {
+    display: block;
+    cursor: crosshair;
+    border: 2.5px solid #eaeaea;
+    border-radius: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.canvas:hover {
+    border-color:  #cbd5e1
+}
+
+.buttonContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 1rem;
+    width: 270px;
+}
+
+.buttonWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.undoButton {
+    width: 80px;
+    background-color: #eaeaea;
+    padding: 4px 10px;
+    border-radius: 1rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+
+}
+
+.clearButton {
+    width: 80px;
+
+    background-color: #FB8B9C;
+    padding: 6px 10px;
+    border-radius: 1rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+
+}
+
+.predictButton {
+    width: 80px;
+    background-color: #C4DC69;
+    padding: 6px 10px;
+    border-radius: 1rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+
+}

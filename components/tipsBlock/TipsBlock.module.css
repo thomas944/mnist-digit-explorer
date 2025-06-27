@@ -1,0 +1,36 @@
+.container {
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    border-radius: 1rem;
+    border: 1px solid #eaeaea;
+    padding: 1rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.tipsList {
+    margin: 12px 0;
+    padding-left: 0;
+    list-style: none; 
+}
+
+.tipItem {
+    position: relative;
+    padding-left: 20px; 
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+/* Custom bullet point */
+.tipItem::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #333; 
+    font-weight: bold;
+    font-size: 1.1em;
+}
+

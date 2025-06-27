@@ -1,0 +1,30 @@
+.container {
+    width: 100%;
+    height: 100%;
+    background-color: #E2E3F8;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: row;
+    padding: 1rem
+}
+
+.textContainer {
+    display: flex;
+    flex-direction: row;
+    font-size: 1.5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.sm {
+    display: none;
+}
+
+@media screen and (max-width: 935px) {
+    .lg {
+        display: none;
+    }
+    .sm {
+        display: block;
+    }
+}

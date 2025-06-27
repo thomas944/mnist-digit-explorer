@@ -1,0 +1,119 @@
+.container {
+    width: 100%;
+    height: 200px;
+    background-color: #E2E3F8;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: row;
+    padding: 1rem
+}
+
+.leftContainer {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.nameContainer {
+    display: flex;
+    flex-direction: column;
+    height: 40%;
+}
+
+.nameText {
+    color: #6974DC;
+    font-size: 1.75rem;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+.guessContainer {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 60%;
+    align-items: center;
+    padding-left: 1rem;
+}
+
+.guessText {
+    color: #6974DC;
+    font-size: 2.5rem;
+    font-weight: 500;
+    padding-right: 1rem;
+    
+}
+
+.guessConfText {
+    color: #006802;
+    background-color: #c4dc69;
+    padding: 5px 16px;
+    border-radius: 1rem;
+
+}
+
+.rightContainer {
+    width: 70%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.headerContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.headerText {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.chartContainer {
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    padding: 0 1rem 0.5rem 1rem;
+}
+
+.barsContainer {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2px;
+}
+
+.barColumn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    height: 100%;
+}
+
+.barWrapper {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    margin-bottom: 0.25rem;
+}
+
+.bar {
+    width: 80%;
+    background-color: #FF6B6B;
+    border-radius: 2px;
+    min-height: 2px;
+    transition: all 0.3s ease;
+}
+
+.barHighlight {
+    background-color: #FF3333 !important;
+    box-shadow: 0 0 25px rgba(255, 51, 51, 0.4);
+}

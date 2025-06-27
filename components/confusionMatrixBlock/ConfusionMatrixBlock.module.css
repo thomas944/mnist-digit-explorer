@@ -1,0 +1,115 @@
+.container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 1rem;
+    border: 1px solid #eaeaea;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.titleText {
+    font-size: 1.75rem;
+    font-weight: 500;
+}
+
+.matrixContainer {
+    display: grid;
+    grid-template-columns: repeat(11, 1fr);
+    grid-template-rows: repeat(11, 1fr);
+}
+
+.cellContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.cell {
+    height: 17.5px;
+    width: 17.5px;
+    margin-top: 10px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.dataCell {
+    cursor: pointer;
+    transition: transform 0.2s ease, color 0.2s ease;
+    z-index: 1; 
+    color: transparent;
+    font-size: 12px;
+}
+
+.dataCell:hover {
+    color: #000000;
+    transform: scale(2); 
+    z-index: 10;
+}
+
+.buttonWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.buttonContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px 20px;
+    width: 270px;
+}
+
+.button {
+    font-size: 1.5rem;
+    width: 65px;
+    height: 35px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.button:hover {
+    background-color: black;
+    color: white;
+}
+
+
+.buttonSelect {
+    background-color: black;
+    color: white;
+}
+
+.summaryContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.summaryRow {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+
+}
+
+.statContainer {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    padding: 10px 0
+}
+
+.statNum {
+    color: #5CC4A8;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+.statText {
+    color: #8C8C8C;
+}
