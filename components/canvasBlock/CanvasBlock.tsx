@@ -8,10 +8,8 @@ import { usePrediction } from '../helpers/PredictionContext';
 const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
 const CanvasBlock = () => {
-    // @ts-ignore
-    const [showOverlay, setShowOverlay] = useState(true);
-    // @ts-ignore
-    const [predictions, setPredictions] = useState<Prediction[]>([]);
+    const [_showOverlay, setShowOverlay] = useState(true);
+    const [_predictions, setPredictions] = useState<Prediction[]>([]);
     const { setData, setIsLoading, isLoading } = usePrediction();
 
     const apiUrl = process.env.NEXT_PUBLIC_API_URL;
