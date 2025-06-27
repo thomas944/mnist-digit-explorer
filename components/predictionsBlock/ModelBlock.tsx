@@ -1,5 +1,7 @@
 import React from 'react'
 import styles from './ModelBlock.module.css'
+import { Tooltip } from 'react-tooltip'
+import 'react-tooltip/dist/react-tooltip.css'
 
 interface Prediction {
     digit: number;
@@ -39,6 +41,8 @@ const ModelBlock = ({ name, output, guess }: ModelData) => {
                             <div key={index} className={styles.barColumn}>
                                 <div className={styles.barWrapper}>
                                     <div
+                                        data-tooltip-id={`confidence-tooltip`}
+                                        data-tooltip-content={`${(item.confidence * 100).toFixed(2)}%`}
                                         style={{
                                             height: `${(item.confidence / maxConfidence) * 100}%`,
                                         }}
@@ -49,8 +53,9 @@ const ModelBlock = ({ name, output, guess }: ModelData) => {
                                 <span className="digitLabel">{item.digit}</span>
 
                             </div>
+                            
                         ))}
-
+                        <Tooltip id="confidence-tooltip" place="top" />
                     </div>
 
                 </div>

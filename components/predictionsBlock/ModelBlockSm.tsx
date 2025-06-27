@@ -13,8 +13,6 @@ interface ModelData {
 }
 
 const ModelBlockSm = ({ name, output, guess }: ModelData) => {
-    const maxConfidence = Math.max(...output.map(pred => pred.confidence));
-
     const top3 = [...output]  
         .sort((a, b) => Number(b.confidence) - Number(a.confidence))
         .slice(0, 3);

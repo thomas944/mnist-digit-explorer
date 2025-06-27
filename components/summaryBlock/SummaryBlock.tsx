@@ -3,6 +3,9 @@ import styles from './SummaryBlock.module.css'
 import { useSelectedModel } from '../helpers/useSelectModel'
 import { getSummary } from '../helpers/helpers'
 import { getLayerStyle } from '../helpers/helpers'
+import { Tooltip } from 'react-tooltip'
+import 'react-tooltip/dist/react-tooltip.css'
+
 
 const SummaryBlock = () => {
 
@@ -31,7 +34,17 @@ const SummaryBlock = () => {
                     </div>
                 </div>
                 <div className={styles.rightContainer}>
-                    <span className={styles.rightHeaderText}>Performance</span>
+                    <div>
+                        <span className={styles.rightHeaderText}
+                            data-tooltip-id="performance-tooltip"
+                            data-tooltip-content="RTX 4080 Super w/ CUDA"
+                        >
+                            Performance</span>
+                        <Tooltip id="performance-tooltip" place="right" />
+
+                    </div>
+                    
+                    
                     <ul className={styles.listContainer}>
                         <li className={styles.listElement}>
                             <span className={styles.numText}>{`${modelStats.size}MB`}</span>
