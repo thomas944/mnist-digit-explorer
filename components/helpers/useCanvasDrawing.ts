@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, useCallback } from 'react'
+import { useRef, useState, useEffect, useCallback } from 'react'
 
 interface Point {
     x: number;
@@ -39,24 +39,24 @@ export const useCanvasDrawing = ({ onCanvasChange, onPredictionsReset }: UseCanv
         return ctx;
     }, []);
 
-    const getMousePos = (e: MouseEvent | TouchEvent): Point => {
-        const canvas = canvasRef.current
-        if (!canvas) return { x: 0, y: 0 }
+    const getMousePos = useCallback((e: MouseEvent | TouchEvent): Point => {
+        const canvas = canvasRef.current;
+        if (!canvas) return { x: 0, y: 0 };
 
-        const rect = canvas.getBoundingClientRect()
+        const rect = canvas.getBoundingClientRect();
 
         if (e instanceof TouchEvent) {
             return {
                 x: e.touches[0].clientX - rect.left,
-                y: e.touches[0].clientY - rect.top
-            }
+                y: e.touches[0].clientY - rect.top,
+            };
         } else {
             return {
                 x: (e as MouseEvent).clientX - rect.left,
-                y: (e as MouseEvent).clientY - rect.top
-            }
+                y: (e as MouseEvent).clientY - rect.top,
+            };
         }
-    }
+    }, []);
 
     const startDrawing = useCallback((e: MouseEvent | TouchEvent) => {
         e.preventDefault()
@@ -195,26 +195,20 @@ export const useCanvasDrawing = ({ onCanvasChange, onPredictionsReset }: UseCanv
         return dataUrl.replace(/^data:image\/png;base64,/, '');
     }, [])
 
-    const getCanvasBlob = useCallback((callback: any) => {
-        const canvas = canvasRef.current;
-        if (!canvas) return;
-
-        canvas.toBlob(callback, 'image/png');
-    }, []);
-
 
     useEffect(() => {
         const canvas = canvasRef.current;
         if (!canvas) return;
 
         // Type the event listeners properly
-        const handleMouseDown = startDrawing as EventListener;
-        const handleMouseMove = draw as EventListener;
-        const handleMouseUp = stopDrawing as EventListener;
-        const handleMouseOut = stopDrawing as EventListener;
-        const handleTouchStart = startDrawing as EventListener;
-        const handleTouchMove = draw as EventListener;
-        const handleTouchEnd = stopDrawing as EventListener;
+        const handleMouseDown = (e: Event) => startDrawing(e as MouseEvent | TouchEvent);
+        const handleMouseMove = (e: Event) => draw(e as MouseEvent | TouchEvent);
+        const handleMouseUp = (e: Event) => stopDrawing(e as MouseEvent | TouchEvent);
+        const handleMouseOut = (e: Event) => stopDrawing(e as MouseEvent | TouchEvent);
+        const handleTouchStart = (e: Event) => startDrawing(e as MouseEvent | TouchEvent);
+        const handleTouchMove = (e: Event) => draw(e as MouseEvent | TouchEvent);
+        const handleTouchEnd = (e: Event) => stopDrawing(e as MouseEvent | TouchEvent);
+
 
         // Mouse events
         canvas.addEventListener('mousedown', handleMouseDown);
@@ -250,6 +244,5 @@ export const useCanvasDrawing = ({ onCanvasChange, onPredictionsReset }: UseCanv
         clearCanvas,
         undoLastStroke,
         getCanvasImageData,
-        getCanvasBlob
     };
 }

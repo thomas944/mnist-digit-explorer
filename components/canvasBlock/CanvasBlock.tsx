@@ -8,7 +8,9 @@ import { usePrediction } from '../helpers/PredictionContext';
 const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
 const CanvasBlock = () => {
+    // @ts-ignore
     const [showOverlay, setShowOverlay] = useState(true);
+    // @ts-ignore
     const [predictions, setPredictions] = useState<Prediction[]>([]);
     const { setData, setIsLoading, isLoading } = usePrediction();
 
@@ -20,7 +22,6 @@ const CanvasBlock = () => {
         clearCanvas,
         undoLastStroke,
         getCanvasImageData,
-        getCanvasBlob
     } = useCanvasDrawing({
         onCanvasChange: (hasContent) => {
             setShowOverlay(!hasContent);

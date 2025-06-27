@@ -21,22 +21,22 @@ const PredictionsBlock = () => {
 
             {!isLoading && data && data.length > 0 ? (
                 data.map((entry, index) => (
-                    <>
-                        <div className={styles.modelBlockLgView} key={index}>
+                    <div key={index}>
+                        <div className={styles.modelBlockLgView}>
                             <ModelBlock
                                 name={entry.name}
                                 output={entry.output}
                                 guess={entry.guess}
                             />
                         </div>
-                        <div className={styles.modelBlockSmView} key={index}>
+                        <div className={styles.modelBlockSmView}>
                             <ModelBlockSm 
                                 name={entry.name}
                                 output={entry.output}
                                 guess={entry.guess}
                             />
                         </div>
-                    </>
+                    </div>
 
                 ))
             ) : (
