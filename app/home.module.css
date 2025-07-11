@@ -43,3 +43,9 @@
     border-radius: 1rem;
     border: 1px solid #eaeaea
 }
+
+@media screen and (max-width: 425px) {
+    .topHeader {
+        font-size: 2.5rem
+    }
+}
